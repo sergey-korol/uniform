@@ -77,7 +77,6 @@ namespace Uniform.Mongodb
                 tasks[index] = Task.Factory.StartNew(() =>
                 {
                     var mongoInsertOptions = new MongoInsertOptions();
-                    mongoInsertOptions.CheckElementNames = false;
                     mongoInsertOptions.WriteConcern = WriteConcern.Acknowledged;
                     mongoCollection.InsertBatch(docs);
                 }, TaskCreationOptions.LongRunning);

@@ -82,7 +82,7 @@ namespace Uniform.Mongodb
 
             var updateOptions = new MongoUpdateOptions
             {
-                CheckElementNames = true, Flags = UpdateFlags.None, WriteConcern = WriteConcern.Acknowledged
+                Flags = UpdateFlags.None, WriteConcern = WriteConcern.Acknowledged
             };
 
             IMongoQuery query = Query.EQ("_id", key);
@@ -116,7 +116,6 @@ namespace Uniform.Mongodb
         public void Save(IEnumerable<Object> docs)
         {
             var mongoInsertOptions = new MongoInsertOptions();
-            mongoInsertOptions.CheckElementNames = false;
             mongoInsertOptions.WriteConcern = WriteConcern.Acknowledged;
             _collection.InsertBatch(docs, mongoInsertOptions);
         }
